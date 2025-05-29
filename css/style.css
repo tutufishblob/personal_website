@@ -11,7 +11,7 @@ body {
       /* background: #333; */
       color: #fff;
       position: fixed;
-      background-image: url('/imgs/ray_tracer_render.png');
+      background-image: url('/personal_website/imgs/ray_tracer_render.png');
       background-size: cover;
       background-position: center;
       top: 0;
