@@ -11,7 +11,166 @@ body {
       /* background: #333; */
       color: #fff;
       position: fixed;
-      background-image: url('/personal_website/imgs/ray_tracer_render.png');
+      background-image: url('/personal_website/imgs/cornell_box_10k_spp_render_cropped.png');
+      background-size: cover;
+      background-position: center;
+      top: 15%;
+      z-index: -1;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1;
+      margin-left: 0%;
+
+
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      text-align: left;
+
+      
+    }
+    main {
+      background-color: white;
+      margin-left: 0%;
+      margin-top: 120%;
+      padding-top: rem;
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+
+    footer {
+      text-align: center;
+      padding-top: 1rem;
+      padding-right: 1rem;
+      background: #333;
+      color: #fff;
+      position: fixed;
+      width: 100%;
+      bottom: 100%;
+    }
+    h1 {
+      color: #333;
+    }
+    p {
+      color: #333;
+    }
+    h2 {
+      display: inline-block;
+      border-bottom: 5px solid #333;
+      
+    }
+ 
+  .sidebar {
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    height: 15%;
+    width: 100%;
+    background-color: #333;
+    
+  }
+
+  .sidebar h1 {
+    color: white;
+    width: fit-content;
+    text-align: center;
+    font-size: 100%;
+  }
+
+  .sidebar a {
+    /* margin: 10px; */
+    /* display: flex; */
+    /* margin-bottom: 20px; */
+    text-decoration: none;
+    color: white;
+    font-size: 100%;
+  }
+ 
+  .sidebar_content {
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 5%;
+    margin-right: 5%;
+    align-items: center;
+  }
+
+.img_crop {
+  border: thick solid teal;
+  
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  width: 70%;
+  aspect-ratio: 1/1;
+  max-width: 6.5em;
+  max-height: 6.5em;
+}
+
+.profile_pic {
+  display: inline;
+  margin: 0 auto;
+  width: auto;
+  height: 100%;
+  
+}
+
+.header_text {
+  position: absolute;
+  top: 0%;
+  right: 1%;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: fit-content;
+  font-size: small;
+  padding: 0.5rem 0.5rem;
+  border-radius: 5px;
+}
+
+.logo_link_container {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 115px;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+}
+  
+.logo_img {
+  filter: contrast(150%);
+  width: 50px;
+}
+
+.resume_paragraph {
+  align-items: center;
+}
+
+.download_icon {
+  filter: invert(1) sepia(1) saturate(10000%) hue-rotate(200deg);
+  width: 20px;
+}
+
+/*------------------------------------------------------------------*/
+
+
+@media (min-width: 850px) {
+  body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background: #f4f4f4;
+      
+      
+    }
+    header {
+      /* background: #333; */
+      color: #fff;
+      position: fixed;
+      background-image: url('/personal_website/imgs/ray_tracer_sphere_render.png');
       background-size: cover;
       background-position: center;
       top: 0;
@@ -20,7 +179,7 @@ body {
       height: auto;
       aspect-ratio: 16/9;
       margin-left: 20%;
-
+      margin-top: 0%;
 
       display: flex;
       flex-direction: column;
@@ -74,7 +233,7 @@ body {
     color: white;
     width: fit-content;
     text-align: center;
-    font-size: 2rem;
+    font-size: 200%;
   }
 
   .sidebar a {
@@ -83,7 +242,7 @@ body {
     margin-bottom: 20px;
     text-decoration: none;
     color: white;
-    font-size: 2rem;
+    font-size: 200%;
   }
  
   .sidebar_content {
@@ -132,7 +291,7 @@ body {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
-  width: 170px;
+  width: 115px;
   padding-bottom: 1rem;
 }
   
@@ -149,3 +308,5 @@ body {
   filter: invert(1) sepia(1) saturate(10000%) hue-rotate(200deg);
   width: 20px;
 }
+}
+  
