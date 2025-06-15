@@ -94,6 +94,7 @@ body {
     justify-content: space-between;
     margin-left: 5%;
     margin-right: 5%;
+    
     align-items: center;
   }
 
@@ -107,8 +108,8 @@ body {
   overflow: hidden;
   width: 70%;
   aspect-ratio: 1/1;
-  max-width: 15%;
-  max-height: 15%;
+  max-width: 11%;
+  max-height: 11%;
 }
 
 .profile_pic {
