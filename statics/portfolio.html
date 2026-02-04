@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Work+Sans:wght@300;400;500;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="portfolio.css">
+</head>
+<body class="light-mode">
+    <!-- Theme Toggle -->
+    <div class="theme-toggle-container">
+        <div class="theme-toggle" id="themeToggle">
+            <svg class="sun-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="moon-icon hidden" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content animate-fadeInUp">
+                <!-- <p class="mono hero-label">PORTFOLIO 2024</p> -->
+                <h1 class="hero-text">
+                    Julian<br>
+                    Whittaker
+                </h1>
+                <!-- <p class="hero-subtitle">
+                    Exploring computer science through coursework and hands-on projects
+                </p> -->
+                
+                <!-- Social Links -->
+                <div class="social-links">
+                    <a href="https://github.com/tutufishblob" target="_blank" rel="noopener noreferrer" class="social-link" title="GitHub">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/julian-whittaker-ds/" target="_blank" rel="noopener noreferrer" class="social-link" title="LinkedIn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                            <rect x="2" y="9" width="4" height="12"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <svg class="animate-float" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M12 5v14M19 12l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Education Timeline -->
+    <section class="education-section">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            
+            <div class="timeline">
+                <div class="timeline-line"></div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <p class="mono tag">2024 - 2027</p>
+                        <h3 class="class-title">Bachelor of Science in Data Science</h3>
+                        <p class="institution">University of Michigan</p>
+                        <p class="focus">Focus: Systems Programming, Computer Graphics, Data Engineering</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <p class="mono tag">Summer 2024</p>
+                        <h3 class="class-title">Study Abroad in Japan</h3>
+                        <p class="institution">Osaka Gakuin Daigaku</p>
+                        <p class="focus">Focus: Japanese Language</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <p class="mono tag">2022 - 2023</p>
+                        <h3 class="class-title">Bachelor of Arts</h3>
+                        <p class="institution">Michigan State University</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Experience Section -->
+    <section class="work-section">
+        <div class="container">
+            <h2 class="section-title">Work Experience</h2>
+            
+            <div class="work-grid">
+                <div class="work-card">
+                    <div class="work-header">
+                        <div>
+                            <h3 class="class-title">Teaching Assistant</h3>
+                            <p class="company">University of Michigan</p>
+                            <p class="location">Ann Arbor, MI</p>
+                        </div>
+                        <span class="mono period-tag">Jan 2026 - Present</span>
+                    </div>
+                    
+                    <p class="description">TA for Computer Graphics & Generative Models course with 1200+ students. Held weekly lab sessions, graded assignments, and aided in exam preperation.</p>
+
+                    <div class="highlights">
+                        <p class="highlights-title">Key Responsibilities:</p>
+                        <ul>
+                            <li>Led discussion sections for 75+ students</li>
+                            <li>Created supplementary Learning materials</li>
+                            <li>Mentored students on course projects</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tags">
+                        <span class="tag mono">C++</span>
+                        <span class="tag mono">Computer Graphics</span>
+                        <!-- <span class="tag mono">PostgreSQL</span>
+                        <span class="tag mono">AWS</span> -->
+                    </div>
+                </div>
+
+                <div class="work-card">
+                    <div class="work-header">
+                        <div>
+                            <h3 class="class-title">Research Assistant</h3>
+                            <p class="company">University of Michigan</p>
+                            <p class="location">Ann Arbor, MI</p>
+                        </div>
+                        <span class="mono period-tag">Aug 2025 - Present</span>
+                    </div>
+                    
+                    <p class="description">Conducting research on dynamic allocation for GPUs. Implemented a new approach to allocation storage which reduced allocation space overhead by 80%.</p>
+
+                    <div class="highlights">
+                        <p class="highlights-title">Key Responsibilities:</p>
+                        <ul>
+                            <li>Develop CUDA code to run on a HPC cluster</li>
+                            <li>Work with CMake and Gtest to publish high quality open-source package</li>
+                            <!-- <li>Mentored 3 undergraduate researchers</li> -->
+                        </ul>
+                    </div>
+                    
+                    <div class="tags">
+                        <span class="tag mono">C/C++</span>
+                        <span class="tag mono">CUDA</span>
+                        <span class="tag mono">CMake</span>
+                        <span class="tag mono">GPU Programming</span>
+                    </div>
+                </div>
+
+                <div class="work-card">
+                    <div class="work-header">
+                        <div>
+                            <h3 class="class-title">Teaching Assistant</h3>
+                            <p class="company">Michigan State University</p>
+                            <p class="location">East Lansing, MI</p>
+                        </div>
+                        <span class="mono period-tag">Jan 2023 - Dec 2023</span>
+                    </div>
+                    
+                    <p class="description">TA for Algorithmic Thinking & Programming course with 1200+ students. Held weekly lab sessions and graded assignments.</p>
+
+                    <div class="highlights">
+                        <p class="highlights-title">Key Responsibilities:</p>
+                        <ul>
+                            <li>Led discussion sections for 60+ students</li>
+                            <li>Created supplementary learning materials</li>
+                            <li>Mentored students on course projects</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tags">
+                        <span class="tag mono">Teaching</span>
+                        <span class="tag mono">Algorithms</span>
+                        <span class="tag mono">Python</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coursework Section -->
+    <section class="coursework-section">
+        <div class="container">
+            <h2 class="section-title">Coursework & Projects</h2>
+            
+            <div class="classes-container" id="classesContainer">
+                <!-- Classes will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Personal Projects Section -->
+    <section class="personal-projects-section">
+        <div class="container">
+            <h2 class="section-title">Personal Projects</h2>
+            
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3 class="class-title">Open Source Contribution Tracker</h3>
+                    <p class="description">Web app that aggregates GitHub activity across repositories and visualizes contribution patterns over time. Features OAuth integration and real-time updates.</p>
+                    
+                    <div class="highlights">
+                        <p class="highlights-title">Features:</p>
+                        <ul>
+                            <li>GitHub GraphQL API integration</li>
+                            <li>Real-time WebSocket updates</li>
+                            <li>Interactive data visualizations</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tags">
+                        <span class="tag mono">React</span>
+                        <span class="tag mono">Node.js</span>
+                        <span class="tag mono">GraphQL</span>
+                        <span class="tag mono">D3.js</span>
+                    </div>
+
+                    <a href="https://github.com/yourusername/project" target="_blank" rel="noopener noreferrer" class="project-link">
+                        View on GitHub
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="class-title">Personal Finance Dashboard</h3>
+                    <p class="description">Privacy-focused finance tracking app with bank integration, automated categorization, and budget insights. All data stored locally with end-to-end encryption.</p>
+                    
+                    <div class="highlights">
+                        <p class="highlights-title">Features:</p>
+                        <ul>
+                            <li>Plaid API for bank connectivity</li>
+                            <li>Machine learning for transaction categorization</li>
+                            <li>Local-first architecture with encryption</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tags">
+                        <span class="tag mono">TypeScript</span>
+                        <span class="tag mono">Electron</span>
+                        <span class="tag mono">SQLite</span>
+                        <span class="tag mono">ML</span>
+                    </div>
+
+                    <a href="https://github.com/yourusername/project" target="_blank" rel="noopener noreferrer" class="project-link">
+                        View on GitHub
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="class-title">Productivity CLI Tool</h3>
+                    <p class="description">Command-line tool for developers to track time, manage tasks, and analyze productivity patterns. Integrates with Git to automatically log coding sessions.</p>
+                    
+                    <div class="highlights">
+                        <p class="highlights-title">Features:</p>
+                        <ul>
+                            <li>Git integration for automatic tracking</li>
+                            <li>Beautiful terminal UI with progress bars</li>
+                            <li>Export to multiple formats (JSON, CSV, Markdown)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tags">
+                        <span class="tag mono">Rust</span>
+                        <span class="tag mono">CLI</span>
+                        <span class="tag mono">Git</span>
+                    </div>
+
+                    <a href="https://github.com/yourusername/project" target="_blank" rel="noopener noreferrer" class="project-link">
+                        View on GitHub
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="class-title">Recipe Recommendation System</h3>
+                    <p class="description">ML-powered recipe finder that suggests meals based on available ingredients, dietary preferences, and nutritional goals. Scraped 100K+ recipes for training.</p>
+                    
+                    <div class="highlights">
+                        <p class="highlights-title">Features:</p>
+                        <ul>
+                            <li>Web scraping pipeline for recipe data</li>
+                            <li>Collaborative filtering recommendation engine</li>
+                            <li>Nutritional analysis and meal planning</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tags">
+                        <span class="tag mono">Python</span>
+                        <span class="tag mono">Scikit-learn</span>
+                        <span class="tag mono">Flask</span>
+                        <span class="tag mono">BeautifulSoup</span>
+                    </div>
+
+                    <a href="https://github.com/yourusername/project" target="_blank" rel="noopener noreferrer" class="project-link">
+                        View on GitHub
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="mono">© 2024 — Built with HTML, CSS & JavaScript</p>
+        </div>
+    </footer>
+
+    <script src="portfolio.js"></script>
+</body>
+</html>
