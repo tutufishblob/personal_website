@@ -250,7 +250,7 @@
                 top: calc(50% + var(--rowOffset)*25%);
                 --hover-y: 0px;
                 transform: translateY(calc(-50% + var(--hover-y)));
-                left: calc(clamp(60px, 13vw, 96px)
+                left: calc(clamp(70px, 13vw, 96px)
                 + var(--index) * clamp(80px, 12vw, 100px))
             }
             
@@ -497,17 +497,19 @@
             const logo = languageLogos[langName] || '';
             const explanation = languageExplanations[langName] || 'No explanation provided.';
             const screenWidth = window.innerWidth;
+            const numIconsWide = Math.floor((screenWidth - 95) /120);
+
 
             const GAP = 4.5;
             let rowOffset = 0;
                 
-            if(numLanguages > 4 && screenWidth <= 670){
+            if(numLanguages > numIconsWide && screenWidth <= 670){
                 rowOffset = -1;
-                if(index >= 4){
+                if(index >= numIconsWide){
                     rowOffset = 1;
                 }
                 
-                index%=4;
+                index%=numIconsWide;
             }
             
 
