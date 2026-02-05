@@ -273,7 +273,7 @@ body.dark-mode {
 .timeline-dot {
     position: absolute;
     left: 0;
-    top: 2rem;
+    top: 5rem;
     width: 1.5rem;
     height: 1.5rem;
     border-radius: 9999px;

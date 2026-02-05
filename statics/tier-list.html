@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programming Languages Tier List</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Work+Sans:wght@300;400;500;600&family=Fira+Code:wght@400;500&family=Inter:wght@700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            overflow-x: hidden;
+            transition: background-color 0.5s, color 0.5s;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        body.light-mode {
+            background-color: #fafaf9;
+            color: #1c1917;
+        }
+
+        body.dark-mode {
+            background-color: #09090b;
+            color: #fafafa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle-container {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            z-index: 50;
+        }
+
+        .theme-toggle {
+            width: 48px;
+            height: 48px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 0;
+            border-radius: 9999px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .light-mode .theme-toggle {
+            background-color: white;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .dark-mode .theme-toggle {
+            background-color: #27272a;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .theme-toggle:active {
+            transform: scale(0.95);
+        }
+
+        .sun-icon {
+            color: #78716c;
+        }
+
+        .moon-icon {
+            color: #fbbf24;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .back-arrow {
+            position: fixed;
+            top: 2rem; /* same as .theme-toggle-container */
+            left: 2rem; /* mirror right */
+            width: 48px; /* match .theme-toggle */
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 9999px;
+            cursor: pointer;
+            background-color: white; /* default light mode bg */
+            color: #1c1917; /* arrow color */
+            text-decoration: none;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.2s;
+            z-index: 50;
+        }
+
+        .back-arrow:hover {
+            transform: scale(1.1);
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        body.dark-mode .back-arrow {
+            background-color: #27272a;
+            color: #fafafa;
+        }
+
+        body.dark-mode .back-arrow:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            margin-bottom: 3rem;
+            opacity: 0.7;
+        }
+
+        .tier-list {
+            border-radius: 1rem;
+            padding: 2rem;
+        }
+
+        .light-mode .tier-list {
+            background-color: white;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .dark-mode .tier-list {
+            background-color: #18181b;
+        }
+
+        .tier-row {
+            position: relative;
+            /* display: flex; */
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            align-items: center;
+            /* padding-left: 80px; */
+            overflow: visible;
+        }
+
+        .tier-row-inner {
+            display: flex;
+            margin-bottom: 0.75rem;
+            min-height: 100px;
+            border-radius: 0.75rem;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .tier-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .tier-label {
+            width: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: white;
+        }
+
+        /* All tiers same dark color */
+        .light-mode .tier-s,
+        .light-mode .tier-a,
+        .light-mode .tier-b,
+        .light-mode .tier-c,
+        .light-mode .tier-d,
+        .light-mode .tier-e,
+        .light-mode .tier-f {
+            background: #1c1917;
+        }
+
+        .dark-mode .tier-s,
+        .dark-mode .tier-a,
+        .dark-mode .tier-b,
+        .dark-mode .tier-c,
+        .dark-mode .tier-d,
+        .dark-mode .tier-e,
+        .dark-mode .tier-f {
+            background: #27272a;
+        }
+
+        .tier-content {
+            flex: 1;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            padding: 1rem;
+            align-items: center;
+            min-height: 100px;
+        }
+
+        .light-mode .tier-content {
+            background-color: #f8f9fa;
+        }
+
+        .dark-mode .tier-content {
+            background-color: #27272a;
+        }
+
+        .tier-row > .language-card {
+            position: absolute;
+            top: 50%;
+            --hover-y: 0px;
+            transform: translateY(calc(-50% + var(--hover-y)));
+            left: calc(clamp(60px, 13vw, 96px)
+            + var(--index) * clamp(80px, 12vw, 100px))
+        }
+
+        @media (max-width: 670px) {
+
+            .tier-row-inner {
+                display: flex;
+                margin-bottom: 0.75rem;
+                min-height: calc(80px * var(--rowScale));
+                border-radius: 0.75rem;
+                z-index: 0;
+                overflow: hidden;
+            }
+
+            .tier-row > .language-card {
+                position: absolute;
+                top: calc(50% + var(--rowOffset)*25%);
+                --hover-y: 0px;
+                transform: translateY(calc(-50% + var(--hover-y)));
+                left: calc(clamp(60px, 13vw, 96px)
+                + var(--index) * clamp(80px, 12vw, 100px))
+            }
+            
+        }
+
+        .language-card {
+            width: 90px;
+            height: 90px;
+            border-radius: 0.75rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            padding: 0.75rem;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .light-mode .language-card {
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .dark-mode .language-card {
+            background-color: #18181b;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .language-card:hover {
+            --hover-y: 0.5rem;
+            transform: translateY(calc(-50% + var(--hover-y))) scale(1.05);
+        }
+
+        .light-mode .language-card:hover {
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .dark-mode .language-card:hover {
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        .language-card img {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+            margin-bottom: 0.5rem;
+        }
+
+        .language-name {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-align: center;
+            opacity: 0.8;
+        }
+
+        /* Tooltip styles */
+        .tooltip {
+            position: absolute;
+            bottom: 110%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            line-height: 1.4;
+            white-space: normal;
+            width: 250px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            z-index: 1000;
+        }
+
+        .light-mode .tooltip {
+            background-color: #1c1917;
+            color: white;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .dark-mode .tooltip {
+            background-color: #fafafa;
+            color: #1c1917;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        .language-card:hover .tooltip {
+            opacity: 1;
+        }
+
+        /* Tooltip arrow */
+        .tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 6px solid transparent;
+        }
+
+        .light-mode .tooltip::after {
+            border-top-color: #1c1917;
+        }
+
+        .dark-mode .tooltip::after {
+            border-top-color: #fafafa;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            .tier-label {
+                width: 60px;
+                font-size: 2rem;
+            }
+
+            .language-card {
+                width: 70px;
+                height: 70px;
+            }
+
+            .language-card img {
+                width: 36px;
+                height: 36px;
+            }
+
+            .language-name {
+                font-size: 0.6rem;
+            }
+        }
+    </style>
+</head>
+<body class="light-mode">
+    <!-- Theme Toggle -->
+    <div class="theme-toggle-container">
+        <div class="theme-toggle" id="themeToggle">
+            <svg class="sun-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="moon-icon hidden" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+        </div>
+    </div>
+
+    <a href="/" class="back-arrow">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+    </a>
+
+    <div class="container">
+        <h1>Programming Languages Tier List</h1>
+        <p class="subtitle">My personal ranking of programming languages</p>
+        
+        <div class="tier-list" id="tierList">
+            <!-- Tiers will be populated by JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        // Define your tier list here - just edit this object!
+        const tierData = {
+            S: [ 'Rust','C++' , 'Python',],
+            A: ['Go','C' ],
+            B: ['C#','TypeScript', 'R',  'Kotlin', 'Swift' ],
+            C: [ 'Ruby', 'Java', 'Lua', 'Haskell', 'OCaml', 'Dart'],
+            D: [ 'JavaScript' ],
+            E: ['PHP',],
+        };
+
+        // Language logos mapping
+        const languageLogos = {
+            'Python': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',
+            'JavaScript': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
+            'TypeScript': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',
+            'Java': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg',
+            'C++': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg',
+            'C#': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg',
+            'C': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg',
+            'Go': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg',
+            'Rust': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rust/rust-original.svg',
+            'Swift': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swift/swift-original.svg',
+            'Kotlin': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg',
+            'Ruby': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ruby/ruby-original.svg',
+            'PHP': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg',
+            'R': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg',
+            'Perl': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/perl/perl-original.svg',
+            'Scala': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scala/scala-original.svg',
+            'Haskell': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/haskell/haskell-original.svg',
+            'Lua': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/lua/lua-original.svg',
+            'Dart': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg',
+            'OCaml': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ocaml/ocaml-original.svg',
+        };
+
+        // Language explanations - edit these!
+        const languageExplanations = {
+            'Rust': 'Rust is just the best, safe, fast, 🦀. I also like the way it looks.',
+            'C++': 'Very fast, one of my first languages so quite nostalgic, extremely powerful. The C++ features are very convenient compared to C, easy S tier.',
+            'Python': 'Should be kept away from systems programs, otherwise I like it for data analysis and machine learning, pretty cool for web too I suppose.',
+            'Go': 'I really enjoyed Go. I think channels are awesome and I might even prefer them to mutexes and CVs. I like the Go syntax and it is quite fast despite garbage collection.',
+            'C': 'Hard to beat for low level stuff. Not that much worse than C++, just kind of annoying sometimes if you need to deal with strings. Sometimes I wish I had classes when writing C code, but alas.',
+            'C#': 'Fine language. Used a lot in game dev so thats cool I guess.',
+            'Kotlin': 'Java++, android is the best and they use Kotlin so that gives it bonus points.',
+            'Swift': 'I don\'t really like how Apple operates, but I hear swift is cool, don\'t like that you need an Apple device to develop for ios though.',
+            'TypeScript': 'JavaScript but it doesn\'t suck. At least it has types, the any type is an abomination.',
+            'R': 'I really hate the syntax but it is quite good at what it does. I prefer Matplotlib for data visualization though tbh.',
+            'Lua': 'Used a lot in games so it\'s cool for that, their arrays are weird though.',
+            'Ruby': 'I have no strong opinions on Ruby, I wouldn\'t choose it for something myself, but I think it\'s pretty good at what it does.',
+            'Haskell': 'I think Haskell is kind of funny, I haven\'t had the chance to use it but from what I\'ve seen I am intrigued and afraid.',
+            'OCaml': 'OCaml is cool. Good for compilers, I believe they wrote the first Rust compiler in OCaml so it gets bonus points too.',
+            'Perl': 'Good scripting language I think? No rank ',
+            'Java': 'I don\'t like Java, I don\'t like its garbage collector and I don\'t like the way it handles its variables. There is some interesting stuff with its compiler, but its only necessary because the languages is weird.',
+            'JavaScript': 'Any type is one of the worst things I have ever seen. == and === is also up there. I hate JavaScript.',
+            'Dart': 'Flutter is kind of cool? Dart is kind of weird though.',
+            'PHP': 'I swear I have never seen a PHP website that looks like it evolved past 2010...'
+        };
+
+        // Theme toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        const sunIcon = document.querySelector('.sun-icon');
+        const moonIcon = document.querySelector('.moon-icon');
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            body.classList.toggle('light-mode');
+            sunIcon.classList.toggle('hidden');
+            moonIcon.classList.toggle('hidden');
+        });
+
+        function createLanguageCard(langName, index, numLanguages) {
+            const logo = languageLogos[langName] || '';
+            const explanation = languageExplanations[langName] || 'No explanation provided.';
+            const screenWidth = window.innerWidth;
+
+            const GAP = 4.5;
+            let rowOffset = 0;
+                
+            if(numLanguages > 4 && screenWidth <= 670){
+                rowOffset = -1;
+                if(index >= 4){
+                    rowOffset = 1;
+                }
+                
+                index%=4;
+            }
+            
+
+            return `
+                <div class="language-card" style="--index: ${index}; --rowOffset: ${rowOffset};">
+                    <div class="tooltip">${explanation}</div>
+                    <img src="${logo}" alt="${langName}" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2248%22 height=%2248%22><rect width=%2248%22 height=%2248%22 fill=%22%23ccc%22/><text x=%2224%22 y=%2230%22 text-anchor=%22middle%22 font-size=%2220%22 fill=%22%23666%22>${langName[0]}</text></svg>'">
+                    <div class="language-name">${langName}</div>
+                </div>
+            `;
+        }
+
+        function renderTierList() {
+            const tierList = document.getElementById('tierList');
+            tierList.innerHTML = ''; // clear previous content
+            const tiers = ['S', 'A', 'B', 'C', 'D', 'E'];
+            
+            tiers.forEach(tier => {
+                const numLanguages = tierData[tier].length;
+                const languages = tierData[tier] || [];
+                const languageCards = languages.map((lang,i) => createLanguageCard(lang, i, numLanguages)).join('');
+                
+                let rowScale = 1;
+                
+
+                if(numLanguages > 4){
+                    rowScale = 2
+                }
+
+                tierList.innerHTML += `
+                    <div class="tier-row">
+                        <div class="tier-row-inner" style="--rowScale: ${rowScale};">
+                            <div class="tier-label tier-${tier.toLowerCase()}">${tier}</div>
+                            <div class="tier-content">
+                            </div>
+                        </div>
+                        ${languageCards}
+                    </div>
+                `;
+            });
+        }
+
+        // Initialize
+        renderTierList();
+        window.addEventListener('resize', renderTierList);
+    </script>
+</body>
+</html>

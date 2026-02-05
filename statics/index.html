@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Work+Sans:wght@300;400;500;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="portfolio.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body class="light-mode">
     <!-- Theme Toggle -->
@@ -136,6 +136,7 @@
                     </div>
                     
                     <div class="tags">
+                        <span class="tag mono">Teaching</span>
                         <span class="tag mono">C++</span>
                         <span class="tag mono">Computer Graphics</span>
                         <!-- <span class="tag mono">PostgreSQL</span>
@@ -221,26 +222,27 @@
             
             <div class="projects-grid">
                 <div class="project-card">
-                    <h3 class="class-title">Open Source Contribution Tracker</h3>
-                    <p class="description">Web app that aggregates GitHub activity across repositories and visualizes contribution patterns over time. Features OAuth integration and real-time updates.</p>
+                    <h3 class="class-title">Voxel Engine</h3>
+                    <p class="description">A real-time voxel rendering engine built in Rust using WebGPU. Implements
+                        chunked world representation, dynamic mesh generation, and GPU-driven
+                        rendering pipelines to efficiently render large voxel scenes.</p>
                     
                     <div class="highlights">
                         <p class="highlights-title">Features:</p>
                         <ul>
-                            <li>GitHub GraphQL API integration</li>
-                            <li>Real-time WebSocket updates</li>
-                            <li>Interactive data visualizations</li>
+                            <li>Chunk-based voxel world with dynamic loading</li>
+                            <li>Texture sampling</li>
+                            <li>Frustum culling</li>
                         </ul>
                     </div>
                     
                     <div class="tags">
-                        <span class="tag mono">React</span>
-                        <span class="tag mono">Node.js</span>
-                        <span class="tag mono">GraphQL</span>
-                        <span class="tag mono">D3.js</span>
+                        <span class="tag mono">Rust</span>
+                        <span class="tag mono">WebGPU</span>
+                        <span class="tag mono">wgpu</span>
                     </div>
 
-                    <a href="https://github.com/yourusername/project" target="_blank" rel="noopener noreferrer" class="project-link">
+                    <a href="https://github.com/tutufishblob/Voxel_Engine" target="_blank" rel="noopener noreferrer" class="project-link">
                         View on GitHub
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
@@ -249,26 +251,25 @@
                 </div>
 
                 <div class="project-card">
-                    <h3 class="class-title">Personal Finance Dashboard</h3>
-                    <p class="description">Privacy-focused finance tracking app with bank integration, automated categorization, and budget insights. All data stored locally with end-to-end encryption.</p>
+                    <h3 class="class-title">Ray Tracer</h3>
+                    <p class="description">A CPU-based ray tracer written in Rust supporting spheres, planes, and
+                        triangle meshes. Implements lighting models, shadows, reflections, and
+                        recursive ray tracing to produce physically inspired images.</p>
                     
                     <div class="highlights">
                         <p class="highlights-title">Features:</p>
                         <ul>
-                            <li>Plaid API for bank connectivity</li>
-                            <li>Machine learning for transaction categorization</li>
-                            <li>Local-first architecture with encryption</li>
+                            <li>Recursive ray tracing with reflections</li>
+                            <li>Anti-Aliasing for high fidelity</li>
+                            <li>Reflective & Refractive Materials</li>
                         </ul>
                     </div>
                     
                     <div class="tags">
-                        <span class="tag mono">TypeScript</span>
-                        <span class="tag mono">Electron</span>
-                        <span class="tag mono">SQLite</span>
-                        <span class="tag mono">ML</span>
+                        <span class="tag mono">Rust</span>
                     </div>
 
-                    <a href="https://github.com/yourusername/project" target="_blank" rel="noopener noreferrer" class="project-link">
+                    <a href="https://github.com/tutufishblob/ray_tracer_project" target="_blank" rel="noopener noreferrer" class="project-link">
                         View on GitHub
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
@@ -276,8 +277,8 @@
                     </a>
                 </div>
 
-                <div class="project-card">
-                    <h3 class="class-title">Productivity CLI Tool</h3>
+                <!-- <div class="project-card">
+                    <h3 class="class-title"></h3>
                     <p class="description">Command-line tool for developers to track time, manage tasks, and analyze productivity patterns. Integrates with Git to automatically log coding sessions.</p>
                     
                     <div class="highlights">
@@ -301,9 +302,9 @@
                             <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
                         </svg>
                     </a>
-                </div>
+                </div> -->
 
-                <div class="project-card">
+                <!-- <div class="project-card">
                     <h3 class="class-title">Recipe Recommendation System</h3>
                     <p class="description">ML-powered recipe finder that suggests meals based on available ingredients, dietary preferences, and nutritional goals. Scraped 100K+ recipes for training.</p>
                     
@@ -329,7 +330,7 @@
                             <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
                         </svg>
                     </a>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
@@ -337,10 +338,10 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p class="mono">© 2024 — Built with HTML, CSS & JavaScript</p>
+            <p class="mono">Julian &lt;3 <a href="/tier-list.html">My personal Programming Language Tier List</a></p>
         </div>
     </footer>
 
-    <script src="portfolio.js"></script>
+    <script src="/scripts/portfolio.js"></script>
 </body>
 </html>
