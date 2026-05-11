@@ -48,6 +48,11 @@ body.dark-mode {
     font-weight: 700;
 }
 
+.minor-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+}
+
 .mono {
     font-family: 'Fira Code', monospace;
 }

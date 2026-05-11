@@ -10,17 +10,12 @@ const classes = [
             {
                 title: "Distributed Multi-Threaded Web Crawler",
                 date: "Winter 2026",
-                description: "Designed and implemented a distributed web crawler capable of efficiently indexing millions of web pages across multiple machines. The system uses multi-threading for concurrent fetching and a distributed task queue to balance crawling workloads. It handles network failures gracefully, ensures URL deduplication, and respects polite crawling policies. The crawler writes results into a central index for downstream ranking.",
-                tags: ["C++", "PThread", "Sockets"],
-                highlights: ["Distributed architecture with multiple crawler nodes", "Multi-threaded page fetching for high throughput", "Fault-tolerant network handling"]
-            },
-            {
-                title: "Ranker",
-                date: "Winter 2026",
-                description: "Built a dynamic search result ranker that scores pages based on query-dependent relevance and contextual signals. The system combines factors such as page authority, link structure, content relevance, and freshness to compute scores in near real-time. Designed for modularity, enabling new ranking features to be added easily and supporting fast updates as new pages are indexed.",
-                tags: ["C++", "Heuristic Algorithms"],
-                highlights: ["Query-sensitive ranking", "Incorporates freshness and link structure in ranking"]
+                description: "Designed and implemented a distributed web crawler capable of efficiently indexing millions of web pages across multiple machines. The system uses multi-threading for concurrent fetching and a distributed task queue to balance crawling workloads. Ensures URL deduplication, and respects polite crawling policies. The crawler writes results into a central index for downstream ranking.",
+                tags: ["C++", "epoll", "AWS"],
+                highlights: ["Distributed architecture with multiple crawler nodes", "Multi-threaded and asynchronous page fetching for high throughput"]
+
             }
+            
         ]
     },
     {
@@ -34,7 +29,8 @@ const classes = [
                 title: "Instagram Clone",
                 date: "January 2026",
                 description: "Iteratively developed an instagram clone, first as a static web page, then dynamic server side, and finally as a client side dynamic page.",
-                tags: ["HTML", "CSS", "JavaScript", "Flask", "Python"],
+                tags: ["HTML", "CSS", "JavaScript", "Flask", "Python", "React"],
+                
                 highlights: ["Client Side Dynamic Web Pages", "Server Side Dynamic Web Pages"]
             }
             // {
