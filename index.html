@@ -36,14 +36,10 @@
     <section class="hero-section">
         <div class="container">
             <div class="hero-content animate-fadeInUp">
-                <!-- <p class="mono hero-label">PORTFOLIO 2024</p> -->
                 <h1 class="hero-text">
                     Julian<br>
                     Whittaker
                 </h1>
-                <!-- <p class="hero-subtitle">
-                    Exploring computer science through coursework and hands-on projects
-                </p> -->
                 
                 <!-- Social Links -->
                 <div class="social-links">
@@ -83,10 +79,7 @@
                     <div class="timeline-content">
                         <p class="mono tag">2024 - 2026</p>
                         <h3 class="class-title">Bachelor of Science in Computer Science & Data Science</h3>
-
-
-                        <h2 class="minor-title">Minor in Mahematics</h2>
-                        
+                        <h2 class="minor-title">Minor in Mathematics</h2>
                         <p class="institution">University of Michigan</p>
                         <p class="focus">Focus: Systems Programming, Computer Graphics, Data Engineering</p>
                     </div>
@@ -123,20 +116,20 @@
                 <div class="work-card">
                     <div class="work-header">
                         <div>
-                            <h3 class="class-title">Software Engineering Intern</h3>
+                            <h3 class="class-title">Firmware Engineer</h3>
                             <p class="company">Mira</p>
                             <p class="location">San Francisco, CA</p>
                         </div>
-                        <span class="mono period-tag">May 2026 - July 2026</span>
+                        <span class="mono period-tag">May 2026 - Present</span>
                     </div>
                     
-                    <p class="description">Firmware engineer for smart glasses. Worked in C and swift to enable and expand capabilites of smart glasses and app.</p>
+                    <p class="description">Firmware engineer for smart glasses, working in C and Swift to expand device capabilities and enable third-party app development.</p>
 
                     <div class="highlights">
                         <p class="highlights-title">Key Responsibilities:</p>
                         <ul>
-                            <li>Develop space constrained firmware for smart glasses</li>
-                            <li>Expand hardware state visibility to enable better debugging and data gathering</li>
+                            <li>Programmed firmware for Arm-based MCUs, handling Bluetooth communication and improving performance/stability</li>
+                            <li>Designed a cross-language rendering protocol (JS → Swift → C) to enable compile-free application development on the glasses</li>
                         </ul>
                     </div>
                     
@@ -144,30 +137,26 @@
                         <span class="tag mono">C</span>
                         <span class="tag mono">Swift</span>
                         <span class="tag mono">Git</span>
-
-                        <!-- <span class="tag mono">PostgreSQL</span>
-                        <span class="tag mono">AWS</span> -->
                     </div>
                 </div>
 
                 <div class="work-card">
                     <div class="work-header">
                         <div>
-                            <h3 class="class-title">Teaching Assistant</h3>
+                            <h3 class="class-title">Computer Graphics Teaching Assistant</h3>
                             <p class="company">University of Michigan</p>
                             <p class="location">Ann Arbor, MI</p>
                         </div>
-                        <span class="mono period-tag">Jan 2026 - Present</span>
+                        <span class="mono period-tag">Jan 2026 - Apr 2026</span>
                     </div>
                     
-                    <p class="description">TA for Computer Graphics & Generative Models course with 1200+ students. Held weekly lab sessions, graded assignments, and aided in exam preperation.</p>
+                    <p class="description">TA for Computer Graphics & Generative Models (EECS 498/598). Held weekly discussion sections, graded assignments, and aided in exam preparation.</p>
 
                     <div class="highlights">
                         <p class="highlights-title">Key Responsibilities:</p>
                         <ul>
-                            <li>Led discussion sections for 75+ students</li>
-                            <li>Created supplementary Learning materials</li>
-                            <li>Mentored students on course projects</li>
+                            <li>Led discussion sections covering rasterization, ray tracing, acceleration structures, 3D reconstruction, and generative modeling</li>
+                            <li>Developed assignments and exercises in ray tracing, Blender, and OpenGL</li>
                         </ul>
                     </div>
                     
@@ -175,29 +164,26 @@
                         <span class="tag mono">Teaching</span>
                         <span class="tag mono">C++</span>
                         <span class="tag mono">Computer Graphics</span>
-                        <!-- <span class="tag mono">PostgreSQL</span>
-                        <span class="tag mono">AWS</span> -->
                     </div>
                 </div>
 
                 <div class="work-card">
                     <div class="work-header">
                         <div>
-                            <h3 class="class-title">Research Assistant</h3>
+                            <h3 class="class-title">CUDA Researcher</h3>
                             <p class="company">University of Michigan</p>
                             <p class="location">Ann Arbor, MI</p>
                         </div>
-                        <span class="mono period-tag">Aug 2025 - Present</span>
+                        <span class="mono period-tag">Aug 2025 - Apr 2026</span>
                     </div>
                     
-                    <p class="description">Conducting research on dynamic allocation for GPUs. Implemented a new approach to allocation storage which reduced allocation space overhead by 80%.</p>
+                    <p class="description">Researched dynamic memory allocation for GPU scientific computing workloads, achieving a 2000x overall acceleration in benchmarks.</p>
 
                     <div class="highlights">
                         <p class="highlights-title">Key Responsibilities:</p>
                         <ul>
-                            <li>Develop CUDA code to run on a HPC cluster</li>
-                            <li>Work with CMake and Gtest to publish high quality open-source package</li>
-                            <!-- <li>Mentored 3 undergraduate researchers</li> -->
+                            <li>Designed a custom dynamic memory allocation library in CUDA, achieving a 5x reduction in allocator overhead and 8x increase in addressable area</li>
+                            <li>Developed CUDA code deployed on an HPC cluster, with CMake and GTest for open-source release</li>
                         </ul>
                     </div>
                     
@@ -219,7 +205,7 @@
                         <span class="mono period-tag">Jan 2023 - Dec 2023</span>
                     </div>
                     
-                    <p class="description">TA for Algorithmic Thinking & Programming course with 1200+ students. Held weekly lab sessions and graded assignments.</p>
+                    <p class="description">TA for Algorithmic Thinking & Programming course. Held weekly lab sessions and graded assignments.</p>
 
                     <div class="highlights">
                         <p class="highlights-title">Key Responsibilities:</p>
@@ -266,8 +252,8 @@
                     <div class="highlights">
                         <p class="highlights-title">Features:</p>
                         <ul>
+                            <li>Capable of dynamically rendering 5,000,000+ voxels at 144+ fps</li>
                             <li>Chunk-based voxel world with dynamic loading</li>
-                            <li>Texture sampling</li>
                             <li>Frustum culling</li>
                         </ul>
                     </div>
@@ -296,8 +282,8 @@
                         <p class="highlights-title">Features:</p>
                         <ul>
                             <li>Recursive ray tracing with reflections</li>
-                            <li>Anti-Aliasing for high fidelity</li>
-                            <li>Reflective & Refractive Materials</li>
+                            <li>Anti-aliasing for high fidelity</li>
+                            <li>Reflective & refractive materials</li>
                         </ul>
                     </div>
                     
@@ -312,61 +298,6 @@
                         </svg>
                     </a>
                 </div>
-
-                <!-- <div class="project-card">
-                    <h3 class="class-title"></h3>
-                    <p class="description">Command-line tool for developers to track time, manage tasks, and analyze productivity patterns. Integrates with Git to automatically log coding sessions.</p>
-                    
-                    <div class="highlights">
-                        <p class="highlights-title">Features:</p>
-                        <ul>
-                            <li>Git integration for automatic tracking</li>
-                            <li>Beautiful terminal UI with progress bars</li>
-                            <li>Export to multiple formats (JSON, CSV, Markdown)</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="tags">
-                        <span class="tag mono">Rust</span>
-                        <span class="tag mono">CLI</span>
-                        <span class="tag mono">Git</span>
-                    </div>
-
-                    <a href="https://github.com/yourusername/project" target="_blank" rel="noopener noreferrer" class="project-link">
-                        View on GitHub
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                        </svg>
-                    </a>
-                </div> -->
-
-                <!-- <div class="project-card">
-                    <h3 class="class-title">Recipe Recommendation System</h3>
-                    <p class="description">ML-powered recipe finder that suggests meals based on available ingredients, dietary preferences, and nutritional goals. Scraped 100K+ recipes for training.</p>
-                    
-                    <div class="highlights">
-                        <p class="highlights-title">Features:</p>
-                        <ul>
-                            <li>Web scraping pipeline for recipe data</li>
-                            <li>Collaborative filtering recommendation engine</li>
-                            <li>Nutritional analysis and meal planning</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="tags">
-                        <span class="tag mono">Python</span>
-                        <span class="tag mono">Scikit-learn</span>
-                        <span class="tag mono">Flask</span>
-                        <span class="tag mono">BeautifulSoup</span>
-                    </div>
-
-                    <a href="https://github.com/yourusername/project" target="_blank" rel="noopener noreferrer" class="project-link">
-                        View on GitHub
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                        </svg>
-                    </a>
-                </div> -->
             </div>
         </div>
     </section>
