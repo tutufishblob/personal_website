@@ -160,11 +160,24 @@ body.dark-mode {
     z-index: 1; /* stays above the canvas */
 }
 
-/* Name card: sits behind the name only, matching the page background */
+/* Name card: wraps the name and social icons, matching the page background */
 .name-card {
-    display: inline-block;
-    padding: 1.5rem 2rem;
-    border-radius: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: clamp(260px, 80vw, 640px);
+    aspect-ratio: 16 / 9;
+    padding: 2rem 2.5rem;
+    border-radius: 1rem;
+}
+
+.name-card .hero-text {
+    margin-bottom: 1.5rem;
+}
+
+.name-card .social-links {
+    margin-bottom: 0;
 }
 
 .light-mode .name-card {
