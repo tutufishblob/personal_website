@@ -1,8 +1,9 @@
 // hero-canvas.js
-// Three.js background for the hero section: a full-viewport grid of cubes,
-// each a random rainbow color, sliding forward/backward in a straight-line
-// (linear, not eased) motion, alternating in a checkerboard pattern.
-// Lit by a single light positioned behind-and-above the camera.
+// Three.js background for the hero section: a full-viewport grid of deep,
+// touching cubes (no gaps between them), each a random rainbow color,
+// sliding forward/backward with an eased ping-pong motion (accelerates out
+// of each turn, decelerates into the next) in an alternating checkerboard
+// pattern. Lit by a single light positioned behind-and-above the camera.
 //
 // Include AFTER three.js is loaded:
 // <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -43,12 +44,13 @@
   scene.add(key);
   scene.add(key.target);
 
-  // ---- Cube grid (sized to cover the full viewport) ----
-  const SPACING = 1.5;
-  const CUBE_SIZE = 1.2;
-  const GRID_Z = -3; // plane the grid sits on
+  // ---- Cube grid (sized to cover the full viewport, no gaps) ----
+  const SPACING = 1.5;       // center-to-center distance between cubes
+  const FACE_SIZE = 1.65;    // wider than SPACING so faces overlap slightly - no visible seams
+  const BOX_DEPTH = 5;       // deep boxes so the slide never reveals a gap behind them
+  const GRID_Z = -3;         // resting plane of the grid
 
-  const geometry = new THREE.BoxGeometry(CUBE_SIZE, CUBE_SIZE, CUBE_SIZE);
+  const geometry = new THREE.BoxGeometry(FACE_SIZE, FACE_SIZE, BOX_DEPTH);
   const group = new THREE.Group();
   scene.add(group);
 
@@ -76,8 +78,6 @@
     const depth = camera.position.z - GRID_Z;
     const { width, height } = visibleSizeAt(depth);
 
-    // Extra padding so edges stay covered while cubes move closer/farther,
-    // which changes how much screen area each one appears to occupy.
     const cols = Math.ceil(width / SPACING) + 4;
     const rows = Math.ceil(height / SPACING) + 4;
 
@@ -94,7 +94,8 @@
         cube.userData = {
           phase: Math.random() * Math.PI * 2,
           parity,
-          speed: 0.6 + Math.random() * 0.3,
+          speed: 0.55 + Math.random() * 0.35,     // per-cube timing variance
+          travel: 2.6 + Math.random() * 1.6,       // per-cube distance variance
         };
 
         group.add(cube);
@@ -115,22 +116,24 @@
   window.addEventListener('resize', resize);
   resize();
 
-  // ---- Linear (triangle-wave) slide in/out ----
-  const TRAVEL = 3.5; // world units each cube swings forward/back
-  const PERIOD = 3.2; // seconds per full forward-back cycle
+  // ---- Eased ping-pong slide (natural ease-in/out at each turnaround) ----
+  const PERIOD = 3.4; // seconds for one leg of the back-and-forth
 
-  // Triangle wave: output ramps -1..1..-1 in perfectly straight lines (no easing).
-  function triangleWave(t) {
-    return 2 * Math.abs(2 * (t / PERIOD - Math.floor(t / PERIOD + 0.5))) - 1;
+  function easedPingPong(t) {
+    const cycle = PERIOD * 2;
+    const x = ((t % cycle) + cycle) % cycle / cycle; // 0..1 across the full cycle
+    const raw = x < 0.5 ? x * 2 : 2 - x * 2;          // 0..1..0 triangle (linear)
+    const eased = raw * raw * (3 - 2 * raw);          // smoothstep: ease in/out at the ends
+    return eased * 2 - 1;                              // -1..1
   }
 
   function animate(t) {
     const time = t * 0.001;
 
     for (const cube of cubes) {
-      const { phase, parity, speed } = cube.userData;
-      const wave = triangleWave(time * speed + phase);
-      cube.position.z = GRID_Z + wave * TRAVEL * parity;
+      const { phase, parity, speed, travel } = cube.userData;
+      const wave = easedPingPong(time * speed + phase);
+      cube.position.z = GRID_Z + wave * travel * parity;
     }
 
     renderer.render(scene, camera);
