@@ -829,3 +829,19 @@ body.dark-mode {
 .dark-mode .footer p {
     color: #71717a;
 }
+.hero-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-canvas {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none; /* let clicks/hover pass through to your links */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1; /* stays above the canvas, unchanged colors */
+}
