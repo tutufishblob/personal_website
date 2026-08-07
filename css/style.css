@@ -144,10 +144,35 @@ body.dark-mode {
     align-items: center;
     justify-content: center;
     position: relative;
+    overflow: hidden;
+}
+
+.hero-canvas {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none; /* let clicks/hover pass through to your links */
 }
 
 .hero-content {
     text-align: left;
+    position: relative;
+    z-index: 1; /* stays above the canvas */
+}
+
+/* Name card: sits behind the name only, matching the page background */
+.name-card {
+    display: inline-block;
+    padding: 1.5rem 2rem;
+    border-radius: 0.75rem;
+}
+
+.light-mode .name-card {
+    background-color: #fafaf9; /* matches body.light-mode background-color */
+}
+
+.dark-mode .name-card {
+    background-color: #09090b; /* matches body.dark-mode background-color */
 }
 
 .hero-label {
@@ -230,6 +255,7 @@ body.dark-mode {
     bottom: 3rem;
     left: 50%;
     transform: translateX(-50%);
+    z-index: 1;
 }
 
 .light-mode .scroll-indicator {
@@ -828,20 +854,4 @@ body.dark-mode {
 
 .dark-mode .footer p {
     color: #71717a;
-}
-.hero-section {
-    position: relative;
-    overflow: hidden;
-}
-
-.hero-canvas {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none; /* let clicks/hover pass through to your links */
-}
-
-.hero-content {
-    position: relative;
-    z-index: 1; /* stays above the canvas, unchanged colors */
 }
