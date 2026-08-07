@@ -1,9 +1,10 @@
 // hero-canvas.js
-// Three.js background for the hero section: a grid of diffuse cubes that
-// oscillate forward/backward in an alternating (checkerboard) pattern.
+// Three.js background for the hero section: a full-viewport grid of cubes,
+// each a random rainbow color, sliding forward/backward in a straight-line
+// (linear, not eased) motion, alternating in a checkerboard pattern.
 // Lit by a single light positioned behind-and-above the camera.
 //
-// Include AFTER three.js is loaded, e.g. in <head> or before </body>:
+// Include AFTER three.js is loaded:
 // <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 // <script src="scripts/hero-canvas.js"></script>
 
@@ -28,56 +29,79 @@
     0.1,
     100
   );
-  camera.position.set(0, 3, 14);
+  camera.position.set(0, 0, 14);
   camera.lookAt(0, 0, 0);
 
   // ---- Lighting ----
-  // Faint ambient so the shadow-side of each cube isn't pure black.
-  const ambient = new THREE.AmbientLight(0xffffff, 0.25);
+  const ambient = new THREE.AmbientLight(0xffffff, 0.35);
   scene.add(ambient);
 
   // Key light: behind and above the camera, aimed back down at the grid.
-  // "Behind the camera" = further along +z than the camera; "above" = higher y.
-  const key = new THREE.DirectionalLight(0xffffff, 1.1);
+  const key = new THREE.DirectionalLight(0xffffff, 1.0);
   key.position.set(2, 18, 22); // behind (z>14) and above (y high) the camera
   key.target.position.set(0, 0, 0);
   scene.add(key);
   scene.add(key.target);
 
-  // ---- Cube grid ----
-  const COLS = 12;
-  const ROWS = 7;
-  const SPACING = 1.6;
-  const CUBE_SIZE = 1;
+  // ---- Cube grid (sized to cover the full viewport) ----
+  const SPACING = 1.5;
+  const CUBE_SIZE = 1.2;
+  const GRID_Z = -3; // plane the grid sits on
 
-  // Diffuse material: matte, no specular highlight, no metalness.
-  const material = new THREE.MeshLambertMaterial({ color: 0x8a8fa3 });
   const geometry = new THREE.BoxGeometry(CUBE_SIZE, CUBE_SIZE, CUBE_SIZE);
-
-  const cubes = [];
   const group = new THREE.Group();
+  scene.add(group);
 
-  for (let i = 0; i < COLS; i++) {
-    for (let j = 0; j < ROWS; j++) {
-      const cube = new THREE.Mesh(geometry, material);
-      const x = (i - (COLS - 1) / 2) * SPACING;
-      const y = (j - (ROWS - 1) / 2) * SPACING;
-      cube.position.set(x, y, 0);
+  let cubes = [];
 
-      // Alternating (checkerboard) phase: even/odd cells move opposite directions.
-      const parity = (i + j) % 2 === 0 ? 1 : -1;
-      cube.userData = {
-        baseZ: 0,
-        phase: (i * 0.4 + j * 0.4),
-        parity,
-      };
-      group.add(cube);
-      cubes.push(cube);
-    }
+  function visibleSizeAt(depth) {
+    const vFov = (camera.fov * Math.PI) / 180;
+    const height = 2 * Math.tan(vFov / 2) * depth;
+    const width = height * camera.aspect;
+    return { width, height };
   }
 
-  group.position.z = -4; // push the grid slightly behind the origin/camera focus
-  scene.add(group);
+  function randomColor() {
+    // Full-spectrum rainbow, a fresh random hue per cube.
+    return new THREE.Color().setHSL(Math.random(), 0.75, 0.55);
+  }
+
+  function buildGrid() {
+    for (const cube of cubes) {
+      group.remove(cube);
+      cube.material.dispose();
+    }
+    cubes = [];
+
+    const depth = camera.position.z - GRID_Z;
+    const { width, height } = visibleSizeAt(depth);
+
+    // Extra padding so edges stay covered while cubes move closer/farther,
+    // which changes how much screen area each one appears to occupy.
+    const cols = Math.ceil(width / SPACING) + 4;
+    const rows = Math.ceil(height / SPACING) + 4;
+
+    for (let i = 0; i < cols; i++) {
+      for (let j = 0; j < rows; j++) {
+        const material = new THREE.MeshLambertMaterial({ color: randomColor() });
+        const cube = new THREE.Mesh(geometry, material);
+
+        const x = (i - (cols - 1) / 2) * SPACING;
+        const y = (j - (rows - 1) / 2) * SPACING;
+        cube.position.set(x, y, GRID_Z);
+
+        const parity = (i + j) % 2 === 0 ? 1 : -1;
+        cube.userData = {
+          phase: Math.random() * Math.PI * 2,
+          parity,
+          speed: 0.6 + Math.random() * 0.3,
+        };
+
+        group.add(cube);
+        cubes.push(cube);
+      }
+    }
+  }
 
   // ---- Resize handling ----
   function resize() {
@@ -86,24 +110,27 @@
     renderer.setSize(w, h, false);
     camera.aspect = w / h;
     camera.updateProjectionMatrix();
+    buildGrid(); // rebuild so the grid always fully covers the viewport
   }
   window.addEventListener('resize', resize);
   resize();
 
-  // ---- Animation loop ----
-  const TRAVEL = 2.2; // how far forward/back each cube swings
-  const SPEED = 0.9;
+  // ---- Linear (triangle-wave) slide in/out ----
+  const TRAVEL = 3.5; // world units each cube swings forward/back
+  const PERIOD = 3.2; // seconds per full forward-back cycle
+
+  // Triangle wave: output ramps -1..1..-1 in perfectly straight lines (no easing).
+  function triangleWave(t) {
+    return 2 * Math.abs(2 * (t / PERIOD - Math.floor(t / PERIOD + 0.5))) - 1;
+  }
 
   function animate(t) {
-    const time = t * 0.001 * SPEED;
+    const time = t * 0.001;
 
     for (const cube of cubes) {
-      const { phase, parity } = cube.userData;
-      cube.position.z = Math.sin(time + phase) * TRAVEL * parity;
-
-      // subtle rotation for extra shading variation as they move
-      cube.rotation.x = Math.sin(time * 0.3 + phase) * 0.15;
-      cube.rotation.y = Math.cos(time * 0.3 + phase) * 0.15;
+      const { phase, parity, speed } = cube.userData;
+      const wave = triangleWave(time * speed + phase);
+      cube.position.z = GRID_Z + wave * TRAVEL * parity;
     }
 
     renderer.render(scene, camera);
