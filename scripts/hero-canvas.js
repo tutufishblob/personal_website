@@ -52,23 +52,31 @@
   scene.add(fill.target);
 
   // ---- Curated, nuanced color palette (muted, not neon-rainbow) ----
-  const PALETTE = [
-    0x5c6f68, // sage
-    0xb4654a, // terracotta
-    0xc6a15b, // ochre
-    0x4a5a7a, // slate blue
-    0x8b5e6b, // mauve
-    0x6e8894, // dusty teal
-    0xa67c52, // warm tan
-    0x5a4a6e, // muted plum
-  ];
+ const PALETTE = [
+  0xe45756, // coral red
+  0xf29e4c, // warm orange
+  0xedc948, // golden yellow
+  0x59a14f, // fresh green
+  0x4e79a7, // sky blue
+  0x3b5dc9, // royal blue
+  0x8e5ea2, // violet
+  0xd37295, // rose
+];
 
-  function pickColor() {
-    const base = new THREE.Color(PALETTE[Math.floor(Math.random() * PALETTE.length)]);
-    // Small per-instance lightness jitter so same-hue cubes aren't identical.
-    base.offsetHSL(0, 0, (Math.random() - 0.5) * 0.08);
-    return base;
-  }
+function pickColor() {
+  const color = new THREE.Color(
+    PALETTE[Math.floor(Math.random() * PALETTE.length)]
+  );
+
+  // Very subtle brightness variation without changing hue.
+  color.offsetHSL(
+    0,
+    (Math.random() - 0.5) * 0.03,
+    (Math.random() - 0.5) * 0.06
+  );
+
+  return color;
+}
 
   // ---- Cube grid (instanced, exact tiling, deep) ----
   const SPACING = 1.5;      // center-to-center distance
